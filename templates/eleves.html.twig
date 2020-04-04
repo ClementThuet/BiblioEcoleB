@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - Bibliothèque de l'école de Boursonne{% endblock %}
+{% block body %}
+    {% block content %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <ul>
+                        <li><a href="/BibliothequeEcole/public/" >Accueil</a></li>
+                        <li><a href="/BibliothequeEcole/public/Bibliotheque">Bibliothèque</a></li>
+                        <li><a href="/BibliothequeEcole/public/Eleves" class="active">Élèves</a></li>
+                        <li><a href="/BibliothequeEcole/public/Emprunts">Emprunts</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Bibliothèque de l'école de Boursonne</h1>
+                    <h3>Les élèves</h3>
+                    <table class=" table table-striped table-bordered">
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Niveau</th>
+                        </tr>
+                        {%for eleve in eleves %}
+                            <tr onclick="location.href='{{ path('eleve_modifier', {'idEleve': eleve.id}) }}'">
+                                <td>{{eleve.nom }}</td>
+                                <td>{{eleve.prenom }}</td>
+                                <td>{{eleve.niveau }}</td>
+                            </tr>
+                        {%endfor%}
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <a href="/BibliothequeEcole/public/Eleves/Ajouter"><button class="btn btn-primary">Nouvel élève</button></a>
+            </div>
+        </div>
+       
+    {% endblock %}
+{% endblock %}

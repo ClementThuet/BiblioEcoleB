@@ -1,0 +1,86 @@
+accueil:
+    path: /
+    controller: App\Controller\BiblioEcoleController::accueil
+
+emprunt_choix_eleve:
+    path: /Emprunt/Eleve/{idEleve}
+    controller: App\Controller\BiblioEcoleController::choixEleve
+    requirements:
+        idEleve: '\d+'
+ 
+emprunt_choix_livre:
+    path: /Emprunt/Livre/{idLivre}-{idEleve}
+    controller: App\Controller\BiblioEcoleController::choixLivre
+    requirements:
+        idLivre: '\d+'
+        idEleve: '\d+'
+        
+bibliotheque:
+    path: /Bibliotheque
+    controller: App\Controller\BiblioEcoleController::bibliotheque
+
+livre_ajouter:
+    path: /Bibliotheque/Ajouter
+    controller: App\Controller\BiblioEcoleController::ajouterLivre
+
+livre_enregistrer:
+    path: /Bibliotheque/Enregistrer
+    controller: App\Controller\BiblioEcoleController::enregistrerLivre
+    
+livre_modifier:
+    path: /Bibliotheque/Modifier/{idLivre}
+    controller: App\Controller\BiblioEcoleController::modifierLivre
+    requirements:
+        idLivre: '\d+'
+
+livre_enregistrer_modification:
+    path: /Bibliotheque/EnregistrerModification/{idLivre}
+    controller: App\Controller\BiblioEcoleController::enregistrerModificationLivre
+    requirements:
+        idLivre: '\d+' 
+        
+livre_supprimer:
+    path: /Bibliotheque/Supprimer/{idLivre}
+    controller: App\Controller\BiblioEcoleController::supprimerLivre
+    requirements:
+        idLivre: '\d+'   
+        
+eleves:
+    path: /Eleves
+    controller: App\Controller\BiblioEcoleController::eleves
+    
+eleve_ajouter:
+    path: /Eleves/Ajouter
+    controller: App\Controller\BiblioEcoleController::ajouterEleve
+    
+eleve_modifier:
+    path: /Eleve/Modifier/{idEleve}
+    controller: App\Controller\BiblioEcoleController::modifierEleve
+    requirements:
+        idEleve: '\d+'
+        
+eleve_enregistrer_modification:
+    path: /Eleve/EnregistrerModification/{idEleve}
+    controller: App\Controller\BiblioEcoleController::enregistrerModificationEleve
+    requirements:
+        idEleve: '\d+'        
+            
+eleve_enregistrer:
+    path: /Eleves/Enregistrer
+    controller: App\Controller\BiblioEcoleController::enregistrerEleve
+
+eleve_supprimer:
+    path: /Eleve/Supprimer/{idEleve}
+    controller: App\Controller\BiblioEcoleController::supprimerEleve
+    requirements:
+        idEleve: '\d+'
+        
+emprunts:
+    path: /Emprunts
+    controller: App\Controller\BiblioEcoleController::emprunts
+    
+emprunt_retour:
+    path: /Emprunt/Retour/{idEmprunt}
+    controller: App\Controller\BiblioEcoleController::empruntRetour
+    requirements:
+        idEmprunt: '\d+'

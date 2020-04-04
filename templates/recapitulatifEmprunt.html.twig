@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Choix du livre - Bibliothèque de l'école de Boursonne{% endblock %}
+{% block body %}
+    {% block content %}
+        <div class="container-fluid">
+            <div class="row">
+                <ul>
+                    <li><a href="/BibliothequeEcole/public/" class="active">Accueil</a></li>
+                    <li><a href="/Bibliotheque">Bibliothèque</a></li>
+                    <li><a href="/BibliothequeEcole/public/Eleves">Élèves</a></li>
+                    <li><a href="/BibliothequeEcole/public/Emprunts">Emprunts</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <h1>Emprunt réussi</h1>
+                <p> Félicitation {{eleve.prenom}} {{eleve.nom}} tu as pris {{livre.titre}}</p>
+                <div>
+                    <img style="width:30vw;" src="../../{{eleve.image.url}}">
+                   {% if emprunt.livre.image.url is defined %}
+                        <div>
+                            <img src='../../{{emprunt.livre.image.url}}' style='width:20vw;'>
+                        </div>
+                    {% else %}   
+                        <div>{{emprunt.livre.titre}}</div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}

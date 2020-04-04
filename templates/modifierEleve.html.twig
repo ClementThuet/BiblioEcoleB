@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier livre - Bibliothèque de l'école de Boursonne{% endblock %}
+{% block body %}
+    {% block content %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <ul>
+                        <li><a href="/BibliothequeEcole/public/" >Accueil</a></li>
+                        <li><a href="/BibliothequeEcole/public/Bibliotheque">Bibliothèque</a></li>
+                        <li><a href="/BibliothequeEcole/public/Eleves" class="active">Élèves</a></li>
+                        <li><a href="/BibliothequeEcole/public/Emprunts">Emprunts</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Bibliothèque de l'école de Boursonne</h1>
+                    <h3>Modifier {{eleve.prenom}} {{ eleve.nom}}</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    {% if eleve.image.url is defined %}
+                        <img style="width:20vw;" src="../../{{eleve.image.url}}">
+                    {%endif%}
+                    <form method="post" action="/BibliothequeEcole/public/Eleve/EnregistrerModification/{{eleve.id}}" role="form" enctype="multipart/form-data">
+                        <div class="js-eleve-id" data-id-eleve="{{eleve.id}}"></div>
+                        <div class="form-group">
+                            <label for="nom">Nom</label>
+                            <input type="text"  name="nom" class="form-control"  value="{{eleve.nom}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="prenom">Prénom</label>
+                            <input type="text"  name="prenom" class="form-control"  value="{{eleve.prenom}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="niveau">Niveau</label>
+                            <input type="text" name="niveau" class="form-control"  value="{{eleve.niveau}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="niveau">Photo</label>
+                            <input class='' type="file" name="photoEleve" id="photoEleve">
+                        </div>
+                        <div class='text-center'>
+                            <a href="{{ path('eleves')}}">
+                               <button type="button" class="btn btn-default">Retour</button>
+                            </a>
+                            <button type="submit" name="submit" class="btn btn-primary">Valider</button>
+                            <button type="button" onclick="ConfirmMessageEleve()" class="btn btn-danger">Supprimer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}

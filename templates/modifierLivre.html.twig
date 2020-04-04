@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter élève - Bibliothèque de l'école de Boursonne{% endblock %}
+{% block body %}
+    {% block content %}
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <ul>
+                        <li><a href="/BibliothequeEcole/public/" >Accueil</a></li>
+                        <li><a href="/BibliothequeEcole/public/Bibliotheque" class="active">Bibliothèque</a></li>
+                        <li><a href="/BibliothequeEcole/public/Eleves">Élèves</a></li>
+                        <li><a href="/BibliothequeEcole/public/Emprunts">Emprunts</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Bibliothèque de l'école de Boursonne</h1>
+                    <h3>Modification de {{livre.titre}}</h3>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    {% if livre.image.url is defined %}
+                        <img style="width:20vw;" src="../../{{livre.image.url}}">
+                    {%endif%}
+                    <form method="post" action="/BibliothequeEcole/public/Bibliotheque/EnregistrerModification/{{livre.id}}" role="form" enctype="multipart/form-data">
+                        <div class="js-livre-id" data-id-livre="{{livre.id}}"></div>
+                        <div class="form-group">
+                            <label for="titre">Titre</label>
+                            <input type="text"  name="titre" class="form-control"  value="{{livre.titre}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="auteur">Auteur</label>
+                            <input type="text"  name="auteur" class="form-control"   value="{{livre.auteur}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="theme">Thème</label>
+                            <input type="text" name="theme" class="form-control"   value="{{livre.theme}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="code">Code</label>
+                            <input type="text" name="code" class="form-control"   value="{{livre.code}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="biblioOrigine">Bibliothèque d'origine</label>
+                            <input type="text" name="biblioOrigine" class="form-control"   value="{{livre.bibliothequeOrigine}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="photoLivre">Photo</label>
+                            <input type="file" name="photoLivre" id="photoLivre">
+                        </div>
+                        <div class='text-center'>
+                            <a href="{{ path('bibliotheque')}}">
+                               <button type="button" class="btn btn-default">Retour</button>
+                            </a>
+                           <button type="submit" name="submit" class="btn btn-primary">Valider</button>
+                            <button type="button" onclick="ConfirmMessageLivre()" class="btn btn-danger">Supprimer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}

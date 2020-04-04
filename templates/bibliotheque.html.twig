@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil - Bibliothèque de l'école de Boursonne{% endblock %}
+{% block body %}
+    {% block content %}
+        <div class="container-fluid">
+            <div class="row">
+                <ul>
+                    <li><a href="/BibliothequeEcole/public/" >Accueil</a></li>
+                    <li><a href="/BibliothequeEcole/public/Bibliotheque" class="active">Bibliothèque</a></li>
+                    <li><a href="/BibliothequeEcole/public/Eleves">Élèves</a></li>
+                    <li><a href="/BibliothequeEcole/public/Emprunts">Emprunts</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Bibliothèque de l'école de Boursonne</h1>
+                    <h3>Les livres</h3>
+                    <table class=" table table-striped table-bordered">
+                        <tr>
+                            <th>Titre</th>
+                            <th>Auteur</th>
+                            <th>Thème</th>
+                            <th>Code</th>
+                            <th>Origine</th>
+                            <th>Emprunté</th>
+                        </tr>
+                        {%for livre in livres %}
+                            <tr onclick="location.href='{{ path('livre_modifier', {'idLivre': livre.id}) }}'">
+                                <td>{{livre.titre }}</td>
+                                <td>{{livre.auteur }}</td>
+                                <td>{{livre.theme }}</td>
+                                <td>{{livre.code }}</td>
+                                <td>{{livre.bibliothequeOrigine }}</td>
+                                <td>{% if livre.estEmprunte == 0%} Non {% else %} Oui {%endif%}</td>
+                            </tr>
+                        {%endfor%}
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <a href="/BibliothequeEcole/public/Bibliotheque/Ajouter"><button class="btn btn-primary">Nouveau livre</button></a>
+            </div>
+        </div>
+       
+    {% endblock %}
+{% endblock %}
